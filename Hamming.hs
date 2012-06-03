@@ -54,7 +54,7 @@ octToStream x = x >>= doct where
 		'5' -> [True, False, True]
 		'6' -> [True, True, False]
 		'7' -> [True, True, True]
-		_ -> error "balls"
+		_ -> error ("not an octal digit: " ++ [l])
 
 hexToStream x = x >>= dhex where
 	dhex l = case l of
@@ -74,7 +74,7 @@ hexToStream x = x >>= dhex where
 		'd' -> [True, True, False, True]
 		'e' -> [True, True, True, False]
 		'f' -> [True, True, True, True]
-		_ -> error "balls"
+		_ -> error ("not a hex digit: " ++ [l])
 
 printCode :: (Show a) => BinTree a -> String
 printCode = unlines . (printCode' "")
